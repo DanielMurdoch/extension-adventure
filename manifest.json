@@ -22,12 +22,12 @@
     "default_popup": "src/page_action/page_action.html"
   },
   "permissions": [
-    "https://web30.uottawa.ca/v3/SITS/timetable/SearchResults.aspx"
+    "https://web30.uottawa.ca/v3/SITS/timetable/Course.aspx?*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://web30.uottawa.ca/v3/SITS/timetable/SearchResults.aspx"
+        "https://web30.uottawa.ca/v3/SITS/timetable/Course.aspx?*"
       ],
       "js": [
         "src/inject/inject.js",

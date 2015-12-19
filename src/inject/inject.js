@@ -8,6 +8,9 @@ chrome.extension.sendMessage({}, function(response) {
 		console.log("Hello. This message was sent from scripts/inject.js");
 		// ----------------------------------------------------------
 
+		console.log(document.all[0].outerHTML)
+		console.log($('.Professor').append("<div>hello world</div>"))
+
 	}
 	}, 10);
 });
