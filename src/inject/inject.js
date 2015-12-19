@@ -3,17 +3,28 @@ chrome.extension.sendMessage({}, function(response) {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
 
-		// ----------------------------------------------------------
-		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
-		// ----------------------------------------------------------
-
 		$('.Professor').each(function(index){
-			console.log(this.innerHTML)
 			profName = this.innerHTML
-			this.innerHTML = "<a href=''>" +  profName +  "</a>"
-		})
+			profURL = 'http://www.ratemyprofessors.com/search.jsp?queryBy=teacherName&schoolName=university+of+ottawa&queryoption=HEADER&query=' + profName.replace(' ', '+') + '&facetSearch=true'
 
+			this.innerHTML = "<a href=''>" +  profName +  "</a>"
+			
+			chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+  				console.log(response.farewell);
+			});
+
+
+
+
+
+			
+
+
+
+
+			//console.log(profName)
+			//console.log(profURL)
+		})
 	}
 	}, 10);
 });
