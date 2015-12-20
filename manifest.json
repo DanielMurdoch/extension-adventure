@@ -12,6 +12,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
+      "js/jquery/jquery.min.js",
       "src/bg/background.js"
     ],
     "persistent": false
@@ -22,7 +23,8 @@
     "default_popup": "src/page_action/page_action.html"
   },
   "permissions": [
-    "https://web30.uottawa.ca/v3/SITS/timetable/Course.aspx?*"
+    "https://web30.uottawa.ca/v3/SITS/timetable/Course.aspx?*",
+    "http://www.ratemyprofessors.com/*"
   ],
   "content_scripts": [
     {
@@ -30,8 +32,8 @@
         "https://web30.uottawa.ca/v3/SITS/timetable/Course.aspx?*"
       ],
       "js": [
-        "src/inject/inject.js",
-        "js/jquery/jquery.min.js"
+        "js/jquery/jquery.min.js",
+        "src/inject/inject.js"
       ]
     }
   ]
