@@ -6,11 +6,17 @@
 
 function rmpGetRequest(request, sender, sendResponse) {
 	$.get(request.url, function(data){
-		sendResponse({data: data})
+		html = $.parseHTML(data)
+		listings = $(html).find('.listings')
+		name = $(listings).find('.main').html()
+		link = $(listings).find('a:first').attr('href')
+		if(link) {
+			link = 'http://www.ratemyprofessors.com' + link
+		}
+		sendResponse(link)
 	}).fail(function(){
-		sendResponse({data: "Fail"})
+		sendResponse(null)
 	})
-	//sendResponse({farewell: request.url});
 }
 
 
