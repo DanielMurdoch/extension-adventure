@@ -33,11 +33,11 @@ function rmpSearchRequest(request, sender, sendResponse) {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if (request.tag == "fetch_rmp_data") {
+    if (request.tag == 'fetch_rmp_data') {
       	rmpSearchRequest(request, sender, sendResponse)
       	return true;
     } else {
     	chrome.pageAction.show(sender.tab.id);
-    	sendResponse({data: "for real"});
+    	sendResponse();
     }
   });
