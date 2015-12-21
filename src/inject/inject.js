@@ -14,7 +14,7 @@ chrome.extension.sendMessage({}, function(response) {
 			profURL = 'http://www.ratemyprofessors.com/search.jsp?queryBy=teacherName&schoolName=university+of+ottawa&queryoption=HEADER&query=' + profName.replace(' ', '+') + '&facetSearch=true'
 			chrome.runtime.sendMessage({tag: "fetch_rmp_data", url: profURL, name: profName}, function(response) {	
   				if(response.link) {
-  					$(element).html("<a href=" + response.link + ">" + response.name + "</a>")
+  					$(element).html("<a href=" + response.link + ">" + response.name + " (" + response.overallGrade+ ")</a>")
 
 
 
