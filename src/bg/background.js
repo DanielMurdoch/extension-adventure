@@ -13,7 +13,7 @@ function rmpGetRequest(request, sender, sendResponse) {
 		if(link) {
 			link = 'http://www.ratemyprofessors.com' + link
 		}
-		sendResponse(link)
+		sendResponse({link: link, name: request.name})
 	}).fail(function(){
 		sendResponse(null)
 	})

@@ -3,16 +3,19 @@ chrome.extension.sendMessage({}, function(response) {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
 
-		$('.Professor').each(function(index){
+		$('.Professor').each(function(index, element){
 			profName = this.innerHTML
 			profURL = 'http://www.ratemyprofessors.com/search.jsp?queryBy=teacherName&schoolName=university+of+ottawa&queryoption=HEADER&query=' + profName.replace(' ', '+') + '&facetSearch=true'
-			chrome.runtime.sendMessage({tag: "fetch_rmp_data", url: profURL}, function(response) {	
-  				if(response) {
-  					console.log(response);
+			chrome.runtime.sendMessage({tag: "fetch_rmp_data", url: profURL, name: profName}, function(response) {	
+  				if(response.link) {
+  					$(element).html("<a href=" + response.link + ">" + response.name + "</a>")
+
+
+
+  					console.log(response)
+  					console.log(element)
   				}
 			});
-
-			this.innerHTML = "<a href=''>" +  profName +  "</a>"
 
 			//console.log(profName)
 			//console.log(profURL)
