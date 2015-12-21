@@ -1,19 +1,16 @@
-// if you checked "fancy-settings" in extensionizr.com, uncomment this lines
-
-// var settings = new Store("settings", {
-//     "sample_setting": "This is how you use Store.js to remember values"
-// });
-
+/** 
+	Request Format:
+	tag: Tag containing the request type / action.
+	url: String containing the url to the search page for the individual prof.
+	name: String containing the prof name.
+**/
 function rmpGetRequest(request, sender, sendResponse) {
 	$.get(request.url, function(data){
-		html = $.parseHTML(data)
-		listings = $(html).find('.listings')
-		name = $(listings).find('.main').html()
-		link = $(listings).find('a:first').attr('href')
-		if(link) {
-			link = 'http://www.ratemyprofessors.com' + link
+		profLink = $($($.parseHTML(data)).find('.listings')).find('a:first').attr('href')
+		if(profLink) {
+			profLink = 'http://www.ratemyprofessors.com' + profLink
 		}
-		sendResponse({link: link, name: request.name})
+		sendResponse({link: profLink, name: request.name})
 	}).fail(function(){
 		sendResponse(null)
 	})

@@ -1,3 +1,9 @@
+/** 
+	Response Format:
+	link: A String containing the link to the individual prof's RMP page.
+	name: A String containing the prof's name. Exactly the same as the profName param sent in the request.
+**/
+
 chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
@@ -16,9 +22,6 @@ chrome.extension.sendMessage({}, function(response) {
   					console.log(element)
   				}
 			});
-
-			//console.log(profName)
-			//console.log(profURL)
 		})
 	}
 	}, 10);
