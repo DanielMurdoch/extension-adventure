@@ -18,11 +18,6 @@ chrome.extension.sendMessage({}, function(response) {
 			chrome.runtime.sendMessage({tag: 'fetch_rmp_data', url: profURL, name: profName}, function(response) {	
   				if(response.link) {
   					$(element).html('<a href=' + response.link + '>' + response.name + ' (' + response.overallGrade+ ')</a>')
-
-
-
-  					console.log(response)
-  					console.log(element)
   				}
 			});
 		})
