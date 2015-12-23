@@ -23,10 +23,15 @@ chrome.extension.sendMessage({}, function(response) {
 			var profURL =  UOTTAWA_RMP_PREFIX + profName.replace(' ', '+') + UOTTAWA_RMP_SUFFIX
 			chrome.runtime.sendMessage({tag: 'fetch_rmp_data', url: profURL, name: profName}, function(response) {	
   				if(response.link) {
-  					$(element).html('<a href=' + response.link + '>' + response.name + ' (' + response.overallGrade+ ')</a>')
+  					$(element).html('<a href=' + response.link + '>' + response.name + '</a>')
+
+  					var listContent = "Overall:&nbsp" + response.overallGrade + " Avg.Grade:&nbsp" + response.averageGrade + " Help:&nbsp" + response.helpfullness + " Clarity:&nbsp" + response.clarity + " Easiness:&nbsp" + response.easiness
+
+  					$('<td>' + listContent + '</td>').insertAfter($(element)) 
   				}
 			});
-			$('<td>Test</td>').insertAfter($(element)) 
+
+			
 		})
 	}
 	}, 10);
