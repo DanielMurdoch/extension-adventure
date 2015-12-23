@@ -4,8 +4,6 @@
 	url: String containing the url to the search page for the individual prof.
 	name: String containing the prof name.
 **/
-
-// NOTE Helpfullness, clarity, easiness can be found by getting the first three divs with the class 'rating'
 function rmpSearchRequest(request, sender, sendResponse) {
 	$.get(request.url, function(outterData){
 		var profLink = $($($.parseHTML(outterData)).find('.listings')).find('a:first').attr('href')
@@ -18,10 +16,8 @@ function rmpSearchRequest(request, sender, sendResponse) {
 				clarity = $($.parseHTML(innerData)).find('.rating:eq(1)').html()
 				easiness = $($.parseHTML(innerData)).find('.rating:eq(2)').html()
 
-
-				console.log('professor: ' + request.name + ' Overall: ' + overallGrade + " averageGrade: " + averageGrade + " helpfullness: " + helpfullness + " clarity: " + clarity + " easiness: " + easiness)
-
-				sendResponse({link: profLink, 
+				sendResponse({
+					link: profLink, 
 					name: request.name, 
 					overallGrade: overallGrade, 
 					averageGrade: averageGrade, 

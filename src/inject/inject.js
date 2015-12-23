@@ -2,7 +2,11 @@
 	Response Format:
 	link: A String containing the link to the individual prof's RMP page.
 	name: A String containing the prof's name. Exactly the same as the profName param sent in the request.
-	overallGrade: String containing the prof's overall grade
+	overallGrade: String containing the prof's overall grade.
+	averageGrade: String containing the prof's average class grade.
+	helpfullness: String containing the prof's average given helpfullness grade.
+	clarity: String containing the prof's average given clarity grade.
+	easiness: String containing the prof's average given easiness grade.
 **/
 const UOTTAWA_RMP_PREFIX = 'http://www.ratemyprofessors.com/search.jsp?queryBy=teacherName&schoolName=university+of+ottawa&queryoption=HEADER&query='
 const UOTTAWA_RMP_SUFFIX = '&facetSearch=true'
