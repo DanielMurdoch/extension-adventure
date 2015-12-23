@@ -12,7 +12,13 @@ chrome.extension.sendMessage({}, function(response) {
 	if (document.readyState === 'complete') {
 		clearInterval(readyStateCheckInterval);
 
-		$('.Professor').each(function(index, element){
+		$('<th>RMP Stats</th>').insertAfter($('[id^=hdr_professor]'))
+
+		$('.footer').each(function(index, element) {
+			$($(element).children()[0]).attr('colspan', 6)
+		})
+
+		$('.Professor').each(function(index, element) {
 			var profName = this.innerHTML
 			var profURL =  UOTTAWA_RMP_PREFIX + profName.replace(' ', '+') + UOTTAWA_RMP_SUFFIX
 			chrome.runtime.sendMessage({tag: 'fetch_rmp_data', url: profURL, name: profName}, function(response) {	
@@ -20,6 +26,7 @@ chrome.extension.sendMessage({}, function(response) {
   					$(element).html('<a href=' + response.link + '>' + response.name + ' (' + response.overallGrade+ ')</a>')
   				}
 			});
+			$('<td>Test</td>').insertAfter($(element)) 
 		})
 	}
 	}, 10);
