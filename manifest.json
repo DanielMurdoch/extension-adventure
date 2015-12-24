@@ -24,7 +24,8 @@
   },
   "permissions": [
     "https://web30.uottawa.ca/v3/SITS/timetable/Course.aspx?*",
-    "http://www.ratemyprofessors.com/*"
+    "http://www.ratemyprofessors.com/*",
+    "storage"
   ],
   "content_scripts": [
     {
