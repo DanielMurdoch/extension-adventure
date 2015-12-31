@@ -17,6 +17,10 @@ chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === 'complete') {
 		clearInterval(readyStateCheckInterval);
+		//Check if storage data is too old.
+		chrome.runtime.sendMessage({tag: 'check_timestamp'}, function(response){
+
+		})
 		//Insert new TH after any instances of Professor TH.
 		$('<th>RMP Stats</th>').insertAfter($('[id^=hdr_professor]'))
 		//Extend footers of sections in the table, just to make things pretty.

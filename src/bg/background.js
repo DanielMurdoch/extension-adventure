@@ -5,6 +5,15 @@
 	name: String containing the prof name.
 **/
 function rmpSearchRequest(request, sender, sendResponse) {
+	//Compare timestamps to check age of storage data.
+	chrome.storage.local.get('timestamp', function(data) {
+		var currTime = Date.now()
+		var timeDiff = currTime - data.timestamp
+		if (timeDiff >= 3600000) {
+			console.log("Data too old. Clearing storage.")
+			chrome.storage.local.clear()
+		}
+	})
 	//Turn the requested prof's name into a single, non dot-extended variable.
 	var profName = request.name
 	//Try and get the prof's data from the chrome storage.
@@ -47,6 +56,9 @@ function rmpSearchRequest(request, sender, sendResponse) {
 						chrome.storage.local.set(storageObject, function() {
 							console.log('No data in storage, setting in storage now.');
 						});
+						//Place the time that the RMP data was loaded.
+						var currTime = Date.now()
+						chrome.storage.local.set({'timestamp' : currTime})
 						//Finally, responsd to the message with all the RMP data about the requested prof.
 						sendResponse(formattedResponse)
 					}).fail(function() {
