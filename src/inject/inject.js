@@ -33,9 +33,11 @@ chrome.extension.sendMessage({}, function(response) {
 			//Call the event/background script to do the gets using a message listener.
 			chrome.runtime.sendMessage({tag: 'fetch_rmp_data', url: profURL, name: profName}, function(response) {	
   				//If the ajax calls don't fail, then the response will be non-null.
-  				if(response.link) {
+  				if(response) {
   					//Edits the prof column, turning the name into a link to their RMP page.
-  					$(element).html('<a target="_blank" href=' + response.link + '>' + response.name + '</a>')
+  					if(response.link) {
+  						$(element).html('<a target="_blank" href=' + response.link + '>' + response.name + '</a>')
+  					}
   					//Fills the data in the new RMP column.
   					$(element).next().find('#rmp_overall').append(response.overallGrade)
   					$(element).next().find('#rmp_average').append(response.averageGrade)
