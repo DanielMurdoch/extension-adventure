@@ -19,7 +19,8 @@
   },
   "page_action": {
     "default_title": "page action demo",
-    "default_popup": "src/page_action/page_action.html"
+    "default_popup": "src/page_action/page_action.html",
+    "default_icon": "icons/icon16.png"
   },
   "permissions": [
     "https://web30.uottawa.ca/v3/SITS/timetable/Course.aspx?*",
