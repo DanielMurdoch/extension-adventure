@@ -1,5 +1,5 @@
 {
-  "name": "University of Ottawa RMP",
+  "name": "University of Ottawa Rate my Prof",
   "version": "0.1.0",
   "manifest_version": 2,
   "description": "This extension embeds RateMyProfessor data within the UofO timetable website.",
